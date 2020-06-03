@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>meme</title>
+</head>
+<style>
+    body{
+        text-align: center;
+        color:blue;
+        background: red;
+    }
+    p{
+        font-size: xx-large;
+        font-family: "arial";
+        text-align: center;
+    }
+    img.supersanik{
+        position:absolute;
+        right: 0px;
+    }
+    .fight{
+        display : none;
+    }
+    img.robotnik{
+        position:absolute;
+        left: 0px;
+    }
+
+</style>
+<script>
+    let test=0;
+    let start=0;
+    let chill=0;
+    window.addEventListener('mousedown', e => {
+        test=test+1;
+    });
+
+    function transfo(){
+        var x = document.getElementById("sanic");
+        var v = x.getAttribute("src");
+
+        if (test === 5 ) {
+            alert("sanic ressent quelque chose");
+        }
+        if (test === 10){
+            alert("sanic s'énerve, je vous demande de vous arreter");
+
+        }
+        if (test === 12){
+            alert("sanic will remember thats");
+        }
+        if (test === 15){
+            alert("bas bravo nils sanic est énervé");
+            v="sanicsrc/sonic.gif";
+        }
+        x.setAttribute("src", v);
+
+    }
+    let timeleft = 10;
+    let oui = 0;
+
+    let Timer = setInterval(function () {
+        if (test > 14){
+            if (timeleft > -1) {
+                document.getElementById("buton2").innerHTML = "sanic seras calme dans (" + timeleft + ")";
+                timeleft -= 1;
+            } else if (timeleft === -1) {
+                document.getElementById("buton2").innerHTML = "cliquez sur nukle pour le calmez";
+                timeleft--;
+                test=0;
+
+            }
+        }
+    }, 1000);
+
+    function calme(){
+        if (timeleft < 1){
+            var y = document.getElementById("sanic");
+            var z = y.getAttribute("src");
+            z="sanic.png";
+            y.setAttribute("src", z);
+            var page = document.getElementById("figh");
+            page.style.display = 'block';
+        }
+        timeleft = 10;
+    }
+    function debut(){
+        start=1;
+        tempsres=20;
+    }
+    let Temps = setInterval(function () {
+        if (start === 1){
+            if (tempsres > -1) {
+                document.getElementById("buton4").innerHTML = "le combat finit dans(" + tempsres + ")";
+                tempsres -= 1;
+            } else if (tempsres === -1 && oui === 0) {
+                document.getElementById("buton4").innerHTML = "c'est une égalité";
+                tempsres--;
+            }
+        }
+    }, 1000);
+    function victoire(){
+        var e = document.getElementById("combat").value;
+        if (tempsres > 0 && e=== 'sanik,est,le,plus,fort,du,monde,plus,que,adrien'){
+            document.getElementById("fin").innerHTML = "sanik win";
+            var a = document.getElementById("robotnik");
+            var b = a.getAttribute("src");
+            b="supersanik.png";
+            a.setAttribute("src", b);
+            oui = 1;
+            document.getElementById("supersanik").style.transform = "translateX(1000px)";
+
+        }
+        if (tempsres > 0 && e=== 'robotnik,est,le,plus,fort,du,monde,plus,que,josian'){
+            document.getElementById("fin").innerHTML = "robotnik win";
+            var ad = document.getElementById("supersanik");
+            var bc = ad.getAttribute("src");
+            bc="robotnik.png";
+            ad.setAttribute("src", bc);
+            oui = 1;
+            document.getElementById("robotnik").style.transform = "translateX(1000px)";
+        }
+
+    }
+
+</script>
+<link rel="stylesheet" type="text/css" href="headerfooter.css">
+<script src="https://kit.fontawesome.com/9e1096e656.js" crossorigin="anonymous"></script>
+
+<script>
+    fetch('footer.html')
+        .then(function (response) {
+
+            return response.text();
+
+        })
+        .then(function (body) {
+            document.getElementById('footer').innerHTML=body;
+
+        })
+
+    fetch('header.html')
+        .then(function (response) {
+            return response.text();
+
+        })
+        .then(function (body) {
+            document.getElementById("header").innerHTML=body;
+
+        })
+</script>
+<body>
+<div id="header" class="header"></div>
+<p> sanic est de retour pour jouer un mauvais tour </p>
+<br>
+<br>
+<p>clique sur sanic pour le faire évoluer</p>
+<button type="img" onclick="transfo()" id="buton"> <img src="sanicsrc/sanic.png" height="800px" width="1000px" align="center" id="sanic" /></button>
+<br>
+<br>
+<br>
+<p id="buton2">sanic est calme</p>
+<br>
+<br>
+<br>
+<button type="button" id="buton1" onclick="calme()"><img src="sanicsrc/nukle.png" height="300px" width="500px" align="center" id="nukle" /></button>
+<br>
+<br>
+<br>
+<div class="fight" id="figh">
+    <p>c'est l'heur de la bataille finale de sanic contre robotnique vous devez prendre part au combat</p>
+    <br>
+    <br>
+    <img src="sanicsrc/robotnik.png" height="200px" width="500px" id="robotnik" class="robotnik" style="float: left" /> <img src="sanicsrc/supersanik.png" height="200px" width="500px" id="supersanik" style="float:left" class="supersanik" />
+    <br>
+    <br><br><br><br><br><br>
+    <br>
+    <br>
+    <br>
+    <p>pour faire gagner sanike il faut que vous écriviez les mots:sanik,est,le,plus,fort,du,monde,plus,que,adrien</p>
+    <p>pour faire gagner robotnique il faut que vous écriviez les mots:robotnik,est,le,plus,fort,du,monde,plus,que,josian</p>
+    <p>le tout en moin de 20 seconde</p>
+    <p id="fin"></p>
+    <label > ici mettre les mots de combat</label><br><input type="text" id="combat" placeholder="mots de combat">
+    <button type="button" id="buton6" onclick="victoire()">validez vos mots</button>
+    <br>
+    <button type="button" id="buton5" onclick="debut()">cliquez pour commencer</button>
+    <p id="buton4"></p>
+</div>
+
+
+
+<div id="footer" class="footer"></div>
+</body>
+</html>

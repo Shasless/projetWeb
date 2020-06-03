@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>iptest</title>
+    <style>
+        table, td {
+            border: 1px solid black;
+        }
+
+        table {
+            font-family: Verdana Light, serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+    </style>
+    <script type='text/javascript'
+            src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=AtiY08tuSHE8EIMH_l5bcbr8Aotd7PRaMG8Ywlwm8TjboirXceP3OOI6pHihyVgT';
+
+    ></script>
+
+    <script>
+        var audio=document.createElement('audio');
+        var first=true;
+        window.addEventListener('click',onmousedown);
+
+        function onmousedown(){
+
+            if(!first) return;
+            console.log("tes");
+            first=false;
+            audio.src="recources/audio.wav";
+            audio.play();
+        }
+
+
+
+        fetch('http://ip-api.com/json/') // On recoit un tableau de donné
+            .then(response => response.json())
+            .then(function (data) {
+                console.log(data);
+                var map = new Microsoft.Maps.Map('#myMap', {
+                    credentials: 'AtiY08tuSHE8EIMH_l5bcbr8Aotd7PRaMG8Ywlwm8TjboirXceP3OOI6pHihyVgT',
+                    center: new Microsoft.Maps.Location(data.lat, data.lon),
+                    mapTypeId: Microsoft.Maps.MapTypeId.aerial,
+                    zoom: 15
+                });
+                let table = document.getElementById("table");
+                let row = table.insertRow(-1);
+                let cell1 = row.insertCell(0);
+                let cell2 = row.insertCell(1);
+                let cell3 = row.insertCell(2);
+                let cell4 = row.insertCell(3);
+                cell1.appendChild(document.createTextNode(data.query));
+                cell2.appendChild(document.createTextNode(data.country));
+                cell3.appendChild(document.createTextNode(data.city));
+                cell4.appendChild(document.createTextNode(data.isp));
+            });
+
+
+
+
+    </script>
+</head>
+<body>
+<table class="table" id="table">
+    <tr class="firstline">
+        <td>ip</td>
+        <td>country</td>
+        <td>city</td>
+        <td>society</td>
+    </tr>
+</table>
+<div id="myMap" style="position:relative;width:600px;height:400px;"></div>
+</body>
+</html>

@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>oiso</title>
+    <script >
+
+      let width = 150;
+      let height = 150;
+      let speedLimit = 15;
+      const numBoids = 70;
+      let visualRange = 75;
+      let Wall =true;
+      let color = "#e72222"
+      let color2 = "#28c680"
+      let centeringFactor = 0.005;
+      let avoidFactor = 0.05; 
+      let form =1;
+      let num =0;
+      let racismvalue =0;
+      let minDistance = 20; 
+
+
+      var oiso = [];
+
+    function initBoids() {
+      for (var i = 0; i < numBoids; i += 1) {
+        oiso[oiso.length] = {
+          x: Math.random() * width,
+          y: Math.random() * height,
+          dx: Math.random() * 10 - 5,
+          dy: Math.random() * 10 - 5,
+          history: [],
+          id: num%2+1,
+        };
+        num++;
+      }
+    }
+
+    function AddOne() {
+        oiso[oiso.length] = {
+          x: Math.random() * width,
+          y: Math.random() * height,
+          dx: Math.random() * 10 - 5,
+          dy: Math.random() * 10 - 5,
+          history: [],
+          id: num%2+1,
+        };
+      num++;
+    }
+    function DeleteOne() {
+      oiso.pop();
+    }
+
+
+    function distance(boid1, boid2) {
+      return Math.sqrt((boid1.x - boid2.x) * (boid1.x - boid2.x) + (boid1.y - boid2.y) * (boid1.y - boid2.y),);
+    }
+      
+    function sizeCanvas() {
+      const canvas = document.getElementById("oiso");
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    }
+
+
+
+
+    function keepWithinBounds(oisal) {
+      const turnFactor = 1;
+
+
+      if(Wall){
+        const margin = 200;
+
+        if (oisal.x < margin) {
+          oisal.dx += turnFactor;
+        }
+        if (oisal.x > width - margin) {
+          oisal.dx -= turnFactor
+        }
+        if (oisal.y < margin) {
+          oisal.dy += turnFactor;
+        }
+        if (oisal.y > height - margin) {
+          oisal.dy -= turnFactor;
+        }
+      }
+      else{
+        const margin = 2;
+
+        if (oisal.x < margin) {
+          oisal.x = oisal.x+width;
+
+        }
+        if (oisal.x > width - margin) {
+          oisal.x = oisal.x-width;
+        }
+        if (oisal.y < margin) {
+          oisal.y = oisal.y+height;
+        }
+        if (oisal.y > height - margin) {
+          oisal.y = oisal.y-height;
+        }
+
+
+      }
+
+    }
+
+    function flyTowardsCenter(oisal) {
+
+
+      let centerX = 0;
+      let centerY = 0;
+      let numNeighbors = 0;
+
+      for (let otherBoid of oiso) {
+        if (distance(oisal, otherBoid) < visualRange) {
+          centerX += otherBoid.x;
+          centerY += otherBoid.y;
+          numNeighbors += 1;
+        }
+      }
+
+      if (numNeighbors) {
+        centerX = centerX / numNeighbors;
+        centerY = centerY / numNeighbors;
+
+        oisal.dx += (centerX - oisal.x) * centeringFactor;
+        oisal.dy += (centerY - oisal.y) * centeringFactor;
+      }
+    }
+
+
+    function avoidOthers(oisal) {
+
+      const diffIDminDistance = 1;
+
+      let distanceM;
+
+      let moveX = 0;
+      let moveY = 0;
+      for (let otherBoid of oiso) {
+        if (otherBoid !== oisal) {
+
+          if(otherBoid.id===oisal.id){
+            distanceM=minDistance;
+          }
+          else{
+            distanceM=diffIDminDistance*racismvalue+minDistance;
+          }
+
+
+
+          if (distance(oisal, otherBoid) < distanceM) {
+            moveX += oisal.x - otherBoid.x;
+            moveY += oisal.y - otherBoid.y;
+          }
+        }
+      }
+
+      oisal.dx += moveX * avoidFactor;
+      oisal.dy += moveY * avoidFactor;
+    }
+
+
+    function matchVelocity(oisal) {
+      const matchingFactor = 0.05; 
+
+      let avgDX = 0;
+      let avgDY = 0;
+      let numNeighbors = 0;
+
+      for (let otherBoid of oiso) {
+        if (distance(oisal, otherBoid) < visualRange) {
+          avgDX += otherBoid.dx;
+          avgDY += otherBoid.dy;
+          numNeighbors += 1;
+        }
+      }
+
+      if (numNeighbors) {
+        avgDX = avgDX / numNeighbors;
+        avgDY = avgDY / numNeighbors;
+
+        oisal.dx += (avgDX - oisal.dx) * matchingFactor;
+        oisal.dy += (avgDY - oisal.dy) * matchingFactor;
+      }
+    }
+
+
+    function limitSpeed(oisal) {
+
+      const speed = Math.sqrt(oisal.dx * oisal.dx + oisal.dy * oisal.dy);
+      if (speed > speedLimit) {
+        oisal.dx = (oisal.dx / speed) * speedLimit;
+        oisal.dy = (oisal.dy / speed) * speedLimit;
+      }
+    }
+
+    let DRAW_TAIL = true;
+
+    function drawOisal(ctx, oisal) {
+      const angle = Math.atan2(oisal.dy, oisal.dx);
+      ctx.translate(oisal.x, oisal.y);
+      ctx.rotate(angle);
+      ctx.translate(-oisal.x, -oisal.y);
+
+      if(oisal.id===1){
+        ctx.fillStyle = color;
+      }else if(oisal.id===2){
+        ctx.fillStyle = color2;
+      }
+
+
+
+
+      ctx.beginPath();
+      ctx.moveTo(oisal.x, oisal.y);
+      if(!test){
+
+        var rot=Math.PI/2*3;
+        var x=oisal.x;
+        var y=oisal.y ;
+        var step=Math.PI/5;
+        for(let i=0;i<5;i++){
+          x=oisal.x+Math.cos(rot)*12;
+          y=oisal.y +Math.sin(rot)*12;
+          ctx.lineTo(x,y)
+          rot+=step
+
+          x=oisal.x+Math.cos(rot)*6;
+          y=oisal.y+Math.sin(rot)*6;
+          ctx.lineTo(x,y)
+          rot+=step
+        }
+        ctx.lineTo(oisal.x,oisal.y-12);
+        ctx.closePath();
+      }
+      else if(form==1){
+        ctx.lineTo(oisal.x - 15, oisal.y + 5);
+        ctx.lineTo(oisal.x - 15, oisal.y - 5);
+        ctx.lineTo(oisal.x, oisal.y);
+      }else if ( form==2){
+        ctx.arc(oisal.x , oisal.y , 5, 0, 2 * Math.PI, false);
+        ctx.stroke();
+      }
+      else if ( form==3){
+        var image = document.getElementById("source");
+        ctx.drawImage(image, oisal.x, oisal.y-10,20,20);
+      }
+
+      ctx.fill();
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+
+      if (DRAW_TAIL) {
+        ctx.strokeStyle = "rgba(210,85,244,0.4)";
+        ctx.beginPath();
+        ctx.moveTo(oisal.history[0][0], oisal.history[0][1]);
+        for (const point of oisal.history) {
+          ctx.lineTo(point[0], point[1]);
+        }
+        ctx.stroke();
+      }
+    }
+    function WallUpdate() {
+
+      if(Wall){
+        DRAW_TAIL=false;
+        Wall=false;
+
+      }
+      else{
+        DRAW_TAIL=true;
+        Wall=true;
+      }
+
+    }
+
+    function animationLoop() {
+
+      var sliderSpeedLimit = document.getElementById("maxspeedSlider");
+      speedLimit=sliderSpeedLimit.value;
+      var sliderVisualRange= document.getElementById("myRange");
+      visualRange=sliderVisualRange.value;
+      var sliderracism= document.getElementById("myRangeracism");
+      racismvalue=sliderracism.value;
+      var sliderCentering= document.getElementById("myRangecentering");
+      centeringFactor=sliderCentering.value/1000;
+      var slideravoiding= document.getElementById("myRangeavoid");
+      centeringFactor=slideravoiding.value/100;
+      var slidermyRangeDistmin= document.getElementById("myRangeDistmin");
+      minDistance=slidermyRangeDistmin.value;
+      color= document.getElementById("colorselector").value;
+      color2= document.getElementById("colorselector2").value;
+
+
+
+
+      for (let oisal of oiso) {
+
+        flyTowardsCenter(oisal);
+        avoidOthers(oisal);
+        matchVelocity(oisal);
+        limitSpeed(oisal);
+        keepWithinBounds(oisal);
+
+
+        oisal.x += oisal.dx;
+        oisal.y += oisal.dy;
+        oisal.history.push([oisal.x, oisal.y])
+        oisal.history = oisal.history.slice(-50);
+      }
+      const ctx = document.getElementById("oiso").getContext("2d");
+      ctx.clearRect(0, 0, width, height);
+      for (let oisal of oiso) {
+        drawOisal(ctx, oisal);
+      }
+      
+      window.requestAnimationFrame(animationLoop);
+    }
+
+    window.onload = () => {
+      window.addEventListener("resize", sizeCanvas, false);
+      sizeCanvas();
+      initBoids();
+      window.requestAnimationFrame(animationLoop);
+    };
+      document.addEventListener('keypress', function(event) {
+
+        if (event.keyCode === 13) {
+          AddOne();
+
+        }
+        else if(event.keyCode === 8){
+
+          DeleteOne();
+        }
+        else if(event.keyCode === 119){
+
+          WallUpdate();
+        }
+      }, true);
+
+      function myFunctionWALL() {
+        var checkBox = document.getElementById("myCheck");
+        if (checkBox.checked == true){
+          Wall=true;
+          DRAW_TAIL=true;
+        } else {
+          Wall=false;
+          DRAW_TAIL=false;
+        }
+      }
+
+      var test = true;
+      function Soundmod() {
+        var audio = document.getElementById("audio");
+        if(test){
+          audio.play();
+          document.getElementById("oiso").classList.add('transition');
+          test=false;
+        }else{
+          audio.pause();
+          document.getElementById("oiso").classList.remove('transition'); 
+          document.getElementById("oiso").classList.add('notransition'); 
+          document.getElementById("oiso").offsetHeight; 
+          document.getElementById("oiso").classList.remove('notransition');
+          test=true;
+        }
+
+      }
+
+    </script>
+    <style type="text/css">
+      body {
+        margin: 0;
+        background: #272931;
+        overflow: hidden;
+      }
+      audio { display:none;}
+
+      .notransition {
+        background: #272931;
+        -webkit-transition: none !important;
+        -moz-transition: none !important;
+        -o-transition: none !important;
+        transition: none !important;
+      }
+      .transition {
+        background-image: url("recources/space.jpg");
+        transition: transform 225s;
+        transform: rotateX(3600deg) rotateY(36000deg) rotateZ(1800deg);
+
+      }
+
+      .option {
+        display: flex;
+        flex-wrap: wrap ;
+        position: absolute;
+        opacity:0.1;
+        transition: opacity 1s;
+
+      }
+      .option:hover {
+        opacity:1;
+
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <canvas id="oiso" width="150" height="150"style="z-index:-1; position: absolute; left: 0px; top: 0px;" ></canvas>
+    <div class="option">
+      Speedlimit:<input class="flex-item"type="range" min="1" max="700" value="15" class="slider" id="maxspeedSlider">
+      Visual Range :<input class="flex-item"type="range" min="1" max="500" value="75" class="slider" id="myRange">
+      centering :<input class="flex-item"type="range" min="1" max="20" value="5" class="slider" id="myRangecentering">
+      DistMin :<input class="flex-item"type="range" min="1" max="200" value="20" class="slider" id="myRangeDistmin">
+      avoid :<input class="flex-item"type="range" min="0.1" max="10" value="5" class="slider" id="myRangeavoid">
+      racism :<input class="flex-item"type="range" min="0" max="5" value="0" class="slider" id="myRangeracism">
+      WALL and TAIL: <input class="flex-item"type="checkbox" id="myCheck"  onclick="myFunctionWALL()" checked>
+      <button type="button"class="flex-item" id ="button+" onclick="AddOne()">+</button>
+      <button type="button" class="flex-item"id ="button-" onclick="DeleteOne()">-</button>
+      <input type="color" class="flex-item"id="colorselector" name="head" value="#e72222">
+      <input type="color" class="flex-item"id="colorselector2" name="head" value="#28c680">
+      <button type="button"class="flex-item" id ="soudbutton" onclick="Soundmod()" >Whoa</button>
+      <audio src="recources/bag-raiders-shoting-stars.mp3" class="flex-item" id="audio" onended="Soundmod()">  </audio>
+      <div style="display:none;"><img id="source" src="recources/yayabot.png" >
+      </div></div>
+  </body>
+</html>

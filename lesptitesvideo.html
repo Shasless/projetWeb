@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page Josian</title>
+    <style>
+        body {
+            color:black;
+
+            background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTyr-E9kI4l939W1qJ3QEkUKbraEbGv7suTUMzqZ5mLylNSlQVN&usqp=CAU);
+            background-repeat:no-repeat;
+            background-position: top;
+            background-size: 50%;
+            background-attachment: fixed;
+        }
+        .ligne1{
+            display: block;
+            margin-left: 200px;
+            margin-top: 50px;
+        }
+        video{
+            height: 300px;
+            width: 400px;
+        }
+        .titre{
+            color: deeppink;
+            font-family: "Comic Sans MS";
+            margin-left: 200px;
+            font-weight: bold;
+        }
+        .ligne2{
+            display: block;
+            margin-left: 200px;
+        }
+        button{
+            margin-left: 45%;
+            height: 100px;
+            text-align: center;
+            width: 100px;
+            border-radius: 50px;
+            background:url("https://www.bioalaune.com/img/article/34950-sel-alerte-dans-nos-asiettes.jpg");
+            background-size: 120%;
+        }
+        .coment{
+            color: deeppink;
+            font-family: "Comic Sans MS";
+            margin-left: 420px;
+            font-weight: bold;
+                 }
+        .Guilde{
+            color: deeppink;
+            font-family: "Comic Sans MS";
+            margin-left: 440px;
+            font-weight: bold;
+            margin-top: 100px;
+            font-size: 50px;
+        }
+
+    </style>
+    <script>
+        var test = true;
+        function Soundmod() {
+            var audio = document.getElementById("audio");
+            if(test){
+                audio.play();
+                test=false;
+            }else{
+                audio.pause();
+                test=true;
+            }
+
+        }
+    </script>
+    <link rel="stylesheet" type="text/css" href="headerfooter.css">
+    <script src="https://kit.fontawesome.com/9e1096e656.js" crossorigin="anonymous"></script>
+    <script>
+        fetch('footer.html')
+            .then(function (response) {
+                return response.text();
+
+            })
+            .then(function (body) {
+                document.getElementById('footer').innerHTML=body;
+
+            })
+
+        fetch('header.html')
+            .then(function (response) {
+                return response.text();
+
+            })
+            .then(function (body) {
+                document.getElementById("header").innerHTML=body;
+
+            })
+    </script>
+</head>
+<body>
+<div id="header" class="header"></div>
+
+        <img src="https://pbs.twimg.com/media/EWF1wPBUEAMK4EV.jpg" style="height: 100px; margin-top: 10px; display: block; margin-left: 45%; border-radius: 50px; box-shadow: 0 0 20px 20px greenyellow">
+
+        <p class="Guilde">Guilde des vidéos rigolo</p>
+
+        <div class="ligne1">
+            <video src="sources/maitre%20yoda.mp4" id="audio0" controls></video>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <video src="sources/squalala.mp4" id="audio1" controls></video>
+        </div>
+        <div>
+            <p class="titre">Maitre Yoda : Tu crois que c'est du respect mon garçon ?
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Link Faces of Evil : Squalala !</p>
+        </div>
+        <div class="ligne2">
+            <video src="sources/DEUS%20VULT.mp4" id="audio0" controls></video>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <video src="sources/Coffin%20Dance.mp4" id="audio1" controls></video>
+        </div>
+        <div>
+            <p class="titre">DEUS VULT
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;
+                Coffin Dance</p>
+        </div>
+
+        <br/><br/><br/>
+
+        <p class="coment">Je suis certain que vous n'allez pas m'écouter mais n'appuiez pas sur ce bouton</p>
+        <button type="submit" id ="soudbutton" onclick="Soundmod()">
+        </button>
+        <audio src="sources/Sardoche.mp3" id="audio" ></audio>
+<div id="footer" class="footer"></div>
+</body>
+</html>

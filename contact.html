@@ -1,0 +1,38 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="headerfooter.css">
+    <script src="https://kit.fontawesome.com/9e1096e656.js" crossorigin="anonymous"></script>
+    <script>
+        fetch('footer.html')
+            .then(function (response) {
+                return response.text();
+
+            })
+            .then(function (body) {
+                document.getElementById('footer').innerHTML=body;
+
+            })
+
+        fetch('header.html')
+            .then(function (response) {
+                return response.text();
+
+            })
+            .then(function (body) {
+                document.getElementById("header").innerHTML=body;
+
+            })
+    </script>
+</head>
+<body>
+
+<div id="header" class="header"></div>
+
+<div>
+    il faudra faire un petit texte de contact qui somme nous
+
+
+</div>
+<div id="footer" class="footer"></div>
+</body>
+</html>

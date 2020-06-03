@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tp2</title>
+    <style>
+
+        img {
+            display: inline-block;
+            position: relative;
+            width: 100px;
+            height: 100px;
+            overflow: hidden;
+            border-radius: 50%;
+            box-shadow:  12px 12px 41px 0px rgba(4,4,112,1);
+
+        }
+        body {
+            background-color: lightgray;
+        }
+
+        form {
+            margin: 0 auto;
+            width: auto;
+            max-width: 1000px;
+            padding: 1em;
+            border: 1px solid #627279;
+            border-radius: 1em;
+            background-color: white;
+            box-shadow: 2px 2px 20px 0 rgb(4, 4, 112);
+            display: flex;
+            flex-wrap: wrap;
+            transition: transform 2s;
+        }
+
+        form {
+            box-sizing: border-box;
+        }
+
+        form div + div {
+            margin-top: 1em;
+        }
+
+
+        input, textarea {
+            font-family: Verdana, serif;
+            width: 200px;
+            outline: 0;
+            border-width: 0 0 1px;
+            border-color: #040470
+        }
+
+        input:focus, textarea:focus {
+
+            border-color: #000;
+        }
+
+
+        Button {
+            box-shadow: 2px 3px 0px 0px #1f3570;
+            background:linear-gradient(to bottom, #0d46a8 5%, #476e9e 100%);
+            background-color:#0d46a8;
+            border-radius:28px;
+            border:1px solid #000e38;
+            display:inline-block;
+            cursor:pointer;
+            color:#ffffff;
+            font-family:Arial;
+            font-size:9px;
+            padding:16px 31px;
+            text-decoration:none;
+            text-shadow:0px 1px 0px #283966;
+        }
+        Button:hover {
+            background:linear-gradient(to bottom, #476e9e 5%, #0d46a8 100%);
+            background-color:#476e9e;
+        }
+        Button:active {
+            position:relative;
+            top:1px;
+        }
+
+
+        table, td {
+            border: 1px solid black;
+        }
+
+        table {
+            font-family: Verdana Light, serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #champ {
+            flex: 1 1 auto;
+        }
+
+        .firstline {
+            font-family: Verdana Bold, serif;
+        }
+
+        nav ol {
+            display: inline-flex;
+        }
+
+        nav ol li {
+            padding: 10px;
+            border-width: 1px;
+            display: flex;
+        }
+
+        #task {
+            display: none;
+        }
+
+        #users {
+            display: table;
+        }
+
+    </style>
+    <script>
+        let unefois = false;
+        let chasse = false;
+        let test = 0;
+        let first = true;
+        let lastclick = 0;
+        let disable = false;
+        let disabletime = 5;
+
+        function testcolor() {
+
+            if (timeleft !== 0) {
+                if (test === 0) {
+                    timeleftad = 2;
+                }
+                if (lastclick === 0) {
+                    lastclick = timeleft
+                }
+                test++;
+                if (test === 5 && lastclick - timeleft <= 2) {
+                    lastclick = 0;
+                    disable = true;
+                    document.getElementById("myForm").style.display = 'none';
+                    alert("HOOO");
+                    test = 0;
+                }
+            }
+            if (timeleft > 0) {
+                return;
+            }
+            let name_v = document.forms["form"]["name"].value;
+            if (name_v === "") {
+                document.forms["form"]["name"].style.borderBottomColor = "red";
+                document.forms["form"]["name"].style.caretColor = "red";
+                return;
+            } else if (name_v === "attaque") {
+                document.getElementById("myForm").style.cursor = "crosshair";
+                document.getElementById("name").style.cursor = "crosshair";
+                document.getElementById("firstname").style.cursor = "crosshair";
+                document.getElementById("mail").style.cursor = "crosshair";
+                document.getElementById("button").style.cursor = "crosshair";
+                document.getElementById("buton").style.cursor = "crosshair";
+                document.getElementById("role").style.cursor = "crosshair";
+                // c'est pas fini, c'etait pas marrant
+            }
+            else if (name_v === "oiso") {
+                window.open("oiso.html");
+
+            }
+            else {
+                document.forms["form"]["name"].style.borderBottomColor = "#040470";
+                document.forms["form"]["name"].style.caretColor = "#black";
+            }
+            let firstname_v = document.forms["form"]["firstname"].value;
+            if (firstname_v === "") {
+                document.forms["form"]["firstname"].style.borderBottomColor = "red";
+                document.forms["form"]["firstname"].style.caretColor = "red";
+                return;
+            } else {
+                document.forms["form"]["firstname"].style.borderBottomColor = "#040470";
+                document.forms["form"]["firstname"].style.caretColor = "#black";
+            }
+            let mail_v = document.forms["form"]["mail"].value;
+            if (mail_v === "") {
+                document.forms["form"]["mail"].style.borderBottomColor = "red";
+                document.forms["form"]["mail"].style.caretColor = "red";
+                return;
+            } else {
+                document.forms["form"]["mail"].style.borderBottomColor = "#040470";
+                document.forms["form"]["mail"].style.caretColor = "#black";
+            }
+            let role_v = document.forms["form"]["role"].value;
+            if (role_v === "") {
+                return;
+            }
+
+
+            let table = document.getElementById("users");
+            let row = table.insertRow(-1);
+            let cell1 = row.insertCell(0);
+            let cell2 = row.insertCell(1);
+            let cell3 = row.insertCell(2);
+            let cell4 = row.insertCell(3);
+            cell1.innerHTML = name_v.toUpperCase();
+            cell2.innerHTML = firstname_v;
+            cell3.innerHTML = mail_v;
+            cell4.innerHTML = role_v;
+            timeleft = 10;
+        }
+
+        function createTask(user_id, id, titre, termine) {
+            let table = document.getElementById("task");
+            let row = table.insertRow(-1);
+            let cell1 = row.insertCell(0);
+            let cell2 = row.insertCell(1);
+            let cell3 = row.insertCell(2);
+            let cell4 = row.insertCell(3);
+            cell1.appendChild(document.createTextNode(user_id));
+            cell2.appendChild(document.createTextNode(id));
+            cell3.appendChild(document.createTextNode(titre));
+            cell4.appendChild(document.createTextNode(termine));
+        }
+
+
+        function tournerdanslevide() {
+            if (unefois) {
+                document.getElementById("myForm").style.transform = "none";
+                unefois = false;
+            } else {
+                document.getElementById("myForm").style.transform = "rotate(180deg)";
+                unefois = true;
+            }
+
+
+        }
+
+        function cleartable() {
+            let table = document.getElementById("users");
+            while (table.rows.length > 1) {
+                table.deleteRow(1);
+            }
+        }
+
+        let data_tab = [];
+        let page = 0;
+
+        async function showTask() {
+            let users = document.getElementById("users");
+            let task = document.getElementById("task");
+            let boutons_page = document.getElementById("boutons-page");
+            boutons_page.style.display = 'inline-flex';
+            users.style.display = 'none';
+            task.style.display = 'table';
+            if (first) {
+                await fetch('https://jsonplaceholder.typicode.com/todos') // On recoit un tableau de donné
+                    .then(response => response.json())
+                    .then(function (data) {
+                        data_tab = data;
+                    });
+                await fetch('https://jsonplaceholder.typicode.com/users') // On recoit un tableau de donné
+                    .then(response => response.json())
+                    .then(function (data) {
+                        for(let i = 0; i < data_tab.length; i++)
+                            data_tab[i].userId = data.find(user => user.id === data_tab[i].userId).name;
+                        console.log(data)
+                    });
+
+                first = false;
+            }
+            while (task.rows.length > 1) {
+                task.deleteRow(1);
+            }
+            for (let i = page; i < page + 10; i++) {
+                let json = data_tab[i];
+                createTask(json.userId, json.id, json.title, json.completed)
+            }
+        }
+
+        function page_up() {
+            if (page < data_tab.length - 10) {
+                page += 10;
+                showTask();
+            }
+        }
+
+        function page_down() {
+            if (page >= 10) {
+                page -= 10;
+                showTask();
+            }
+        }
+
+        function showUser() {
+            let users = document.getElementById("users");
+            let task = document.getElementById("task");
+            let boutons_page = document.getElementById("boutons-page");
+            boutons_page.style.display = 'none';
+            users.style.display = 'table';
+            task.style.display = 'none'
+        }
+
+        let timeleft = 10;
+        let timeleftad = 2;
+
+        let Timer = setInterval(function () {
+            if (timeleft > -1) {
+                document.getElementById("buton").innerHTML = "AJOUTER (" + timeleft + ")";
+                document.getElementById("buton").style.color = "red";
+                timeleft -= 1;
+            } else if (timeleft === -1) {
+                document.getElementById("buton").innerHTML = "AJOUTER";
+                document.getElementById("buton").style.color = "black";
+                timeleft--;
+            }
+
+        }, 1000);
+        let Timeradd = setInterval(function () {
+            if (timeleftad > -1) {
+                timeleftad -= 1;
+            }
+            if (timeleft === 0) {
+                test = 0;
+                timeleftad--;
+            }
+            if (disable) {
+                disabletime--;
+            }
+            if (disabletime === 0) {
+                disable = false;
+                disabletime = 5;
+                document.getElementById("myForm").style.display = 'flex';
+            }
+
+        }, 1000);
+
+
+    </script>
+</head>
+<body onload="showUser()">
+<div style="text-align: center">
+
+    <table class="table" id="task">
+        <tr class="firstline">
+            <td>NAME</td>
+            <td>ID</td>
+            <td>TITRE</td>
+            <td>TERMINE</td>
+        </tr>
+    </table>
+    <nav id="boutons-page">
+        <ol>
+            <li class="ong">
+                <button type="button" onclick="page_down()">Page d'avant</button>
+            </li>
+            <li class="ong">
+                <button type="button" onclick="page_up()">Page d'après</button>
+            </li>
+        </ol>
+    </nav>
+    <table class="table" id="users">
+        <tr class="firstline">
+            <td>NOM</td>
+            <td>Prénom</td>
+            <td>Mail</td>
+            <td>Rôle</td>
+        </tr>
+    </table>
+
+    <br>
+    <br>
+    <img src="recources/yayabot.png" height="100px" width="150px" align="center" alt="img"/>
+    <nav>
+        <ol>
+            <li class="ong">
+                <button type="button" id="button_users" onclick="showUser()">UTILISATEURS</button>
+            </li>
+            <li class="ong">
+                <button type="button" id="button_tache" onclick="showTask()">TÂCHES</button>
+            </li>
+        </ol>
+    </nav>
+    <form name="form" id="myForm" method="post">
+        <div id="champ">
+            <label for="name"></label><input type="text" id="name" name="user_name" placeholder="Nom">
+
+            <label for="firstname"></label><input type="text" id="firstname" name="user_firstname" placeholder="Prénom">
+
+            <label for="mail"></label><input type="email" id="mail" name="user_mail" placeholder="Mail">
+
+            <label for="role"></label><select name="role" id="role">
+            <option value="">--Choississez une option--</option>
+            <option value="etudiant">Etudiant</option>
+            <option value="enseignant">Enseignant</option>
+
+        </select>
+        </div>
+        <div class="button">
+            <button type="button" id="buton" onclick="testcolor()">AJOUTER</button>
+            <button type="button" id="button" onclick="cleartable()">TOUT SUPPRIMER</button>
+        </div>
+    </form>
+    <div class="Indila">
+        <button type="button" onclick="tournerdanslevide()">INDILA</button>
+    </div>
+
+</div>
+</body>
+</html>
