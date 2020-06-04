@@ -8,7 +8,7 @@
     body{
         text-align: center;
         color:blue;
-        background: red;
+        background: #ff0000;
     }
     p{
         font-size: xx-large;
@@ -26,6 +26,31 @@
         position:absolute;
         left: 0px;
     }
+    .smouth{
+        display : none;
+    }
+    .p1{
+        display : block;
+    }
+    .dance{
+        display : none;
+    }
+    .tail{
+        display : none;
+    }
+    .shadow{
+        display : none;
+    }
+    .sanic3{
+        display : none;
+    }
+    .fille{
+        display : none;
+    }
+    #tail, #sanic3, #shadow, #fille
+     {
+         float: left ;
+     }
 
 </style>
 <script>
@@ -53,6 +78,8 @@
         if (test === 15){
             alert("bas bravo nils sanic est énervé");
             v="sanicsrc/sonic.gif";
+            var nuk = document.getElementById("smouth");
+            nuk.style.display = 'block';
         }
         x.setAttribute("src", v);
 
@@ -78,10 +105,9 @@
         if (timeleft < 1){
             var y = document.getElementById("sanic");
             var z = y.getAttribute("src");
-            z="sanic.png";
+            z="sanicsrc/sanic.png";
             y.setAttribute("src", z);
-            var page = document.getElementById("figh");
-            page.style.display = 'block';
+
         }
         timeleft = 10;
     }
@@ -110,6 +136,7 @@
             a.setAttribute("src", b);
             oui = 1;
             document.getElementById("supersanik").style.transform = "translateX(1000px)";
+            document.getElementById("combat").value="";
 
         }
         if (tempsres > 0 && e=== 'robotnik,est,le,plus,fort,du,monde,plus,que,josian'){
@@ -120,6 +147,96 @@
             ad.setAttribute("src", bc);
             oui = 1;
             document.getElementById("robotnik").style.transform = "translateX(1000px)";
+            document.getElementById("combat").value="";
+
+        }
+
+    }
+    function suivant(){
+        var page = document.getElementById("figh");
+        page.style.display = 'block';
+        var rip = document.getElementById("p1");
+        rip.style.display = 'none';
+    }
+    function p3(){
+        var page = document.getElementById("figh");
+        page.style.display = 'none';
+        var cc =document.getElementById("dance");
+        cc.style.display= 'block';
+    }
+    function chant(){
+        var l = document.getElementById("music").value;
+        let m1=0;
+        let m2=0;
+        let m3=0;
+        let m4=0;
+        if (l=== 'demons'){
+            var d = document.getElementById("tail");
+            d.style.display = 'block';
+            m1=1;
+        }
+        if (l=== 'kietu'){
+            var k = document.getElementById("sanic3");
+            k.style.display = 'block';
+            m2=1;
+        }
+        if(l=== 'vitrine'){
+            var f = document.getElementById("shadow");
+            f.style.display = 'block';
+            m3=1;
+        }
+        if(l=== 'trop beau'){
+            var w = document.getElementById("fille");
+            w.style.display = 'block'
+            m4=1;
+        }
+        if (m1==1 && m2==1 && m3==1 && m4==1){
+            document.getElementById("stop").innerHTML = "vous avez libérer sanic et ses amis : )";
+        }
+        document.getElementById("music").value="";
+    }
+    var cha=true;
+    function Soundmod() {
+        var audio = document.getElementById("audio1");
+        if(cha){
+            audio.play();
+            cha=false;
+        }else{
+            audio.pause();
+            cha=true;
+        }
+
+    }
+    function Soundmod1() {
+        var audio = document.getElementById("audio2");
+        if(cha){
+            audio.play();
+            cha=false;
+        }else{
+            audio.pause();
+            cha=true;
+        }
+
+    }
+    function Soundmod2() {
+        var audio = document.getElementById("audio3");
+        if(cha){
+            audio.play();
+            cha=false;
+        }else{
+            audio.pause();
+            cha=true;
+        }
+
+    }
+    function Soundmod3() {
+        var audio = document.getElementById("audio4");
+        if(cha){
+            audio.play();
+            cha=false;
+        }else{
+            audio.pause();
+            cha=true;
         }
 
     }
@@ -152,6 +269,7 @@
 </script>
 <body>
 <div id="header" class="header"></div>
+<div id="p1" class="p1">
 <p> sanic est de retour pour jouer un mauvais tour </p>
 <br>
 <br>
@@ -163,10 +281,19 @@
 <p id="buton2">sanic est calme</p>
 <br>
 <br>
+<div class="smouth" id="smouth">
 <br>
 <button type="button" id="buton1" onclick="calme()"><img src="sanicsrc/nukle.png" height="300px" width="500px" align="center" id="nukle" /></button>
 <br>
 <br>
+    <br>
+    <br>
+    <button type="button" id="buton9" onclick="suivant()">passer au suivant</button>
+    <br>
+    <br>
+    <br>
+</div>
+</div>
 <br>
 <div class="fight" id="figh">
     <p>c'est l'heur de la bataille finale de sanic contre robotnique vous devez prendre part au combat</p>
@@ -178,15 +305,52 @@
     <br>
     <br>
     <br>
-    <p>pour faire gagner sanike il faut que vous écriviez les mots:sanik,est,le,plus,fort,du,monde,plus,que,adrien</p>
-    <p>pour faire gagner robotnique il faut que vous écriviez les mots:robotnik,est,le,plus,fort,du,monde,plus,que,josian</p>
-    <p>le tout en moin de 20 seconde</p>
+    <p>pour faire gagner sanike il faut que vous écriviez les mots:sanik,est,le,plus,fort,du,monde,plus,que,adrien</p><br><br>
+    <p>pour faire gagner robotnique il faut que vous écriviez les mots:robotnik,est,le,plus,fort,du,monde,plus,que,josian</p><br>
+    <p>le tout en moin de 20 seconde</p><br>
     <p id="fin"></p>
-    <label > ici mettre les mots de combat</label><br><input type="text" id="combat" placeholder="mots de combat">
+    <label > ici mettre les mots de combat</label><br><input type="text" id="combat" placeholder="mots de combat" value="">
     <button type="button" id="buton6" onclick="victoire()">validez vos mots</button>
     <br>
     <button type="button" id="buton5" onclick="debut()">cliquez pour commencer</button>
     <p id="buton4"></p>
+    <br>
+    <br>
+    <br>
+    <button type="button" id="buton7" onclick="p3()">cliquez pour passer au suivant</button>
+    <br>
+    <br>
+</div>
+<br>
+<br>
+<div class="dance" id="dance">
+    <p>Vous allez devoir libérer sanic et ses amis. Pour cela c'est très simple, il faut que vous trouviez les chansons que robotnik vas vous faire écouter</p>
+    <br>
+    <label > ici mettre le titre des chansons</label><br><input type="text" id="music" placeholder="ici mettre le titre des chanteurs" value="">
+    <button type="button" id="buton10" onclick="chant()">validez vos chansons</button>
+    <br>
+    <button type="submit" id ="demons" onclick="Soundmod()">musique 1</button>
+    <audio src="sanicsrc/demons.mp3" id="audio1" ></audio>
+    <button type="submit" id ="kietu" onclick="Soundmod1()">musique 2</button>
+    <audio src="sanicsrc/kietu.mp3" id="audio2" ></audio>
+    <button type="submit" id ="vitrine" onclick="Soundmod2()">musique 3</button>
+    <audio src="sanicsrc/vitrine.mp3" id="audio3" ></audio>
+    <button type="submit" id ="trop beau" onclick="Soundmod3()">musique 4</button>
+    <audio src="sanicsrc/trop beau.mp3" id="audio4" ></audio>
+    <br>
+    <br>
+    <br>
+    <img src="sanicsrc/tail.png" height="200px" width="480px"  id="tail" class="tail" />
+    <img src="sanicsrc/sanic3.gif" height="200px" width="480px"  id="sanic3" class="sanic3" />
+    <img src="sanicsrc/shadow.png" height="200px" width="480px"  id="shadow" class="shadow" />
+    <img src="sanicsrc/fille.png" height="200px" width="480px"  id="fille" class="fille" />
+    <br>
+    <p id="stop"></p>
+    <br>
+    <br>
+    <br>
+    <br>
+
 </div>
 
 
