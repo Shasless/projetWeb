@@ -29,6 +29,18 @@
     .smouth{
         display : none;
     }
+    .demons{
+        color: black;
+    }
+    .numb{
+        color: black;
+    }
+    .animals{
+        color: black;
+    }
+    .trop beau{
+        color: black;
+    }
     .p1{
         display : block;
     }
@@ -175,12 +187,12 @@
             d.style.display = 'block';
             m1=1;
         }
-        if (l=== 'kietu'){
+        if (l=== 'numb'){
             var k = document.getElementById("sanic3");
             k.style.display = 'block';
             m2=1;
         }
-        if(l=== 'vitrine'){
+        if(l=== 'animals'){
             var f = document.getElementById("shadow");
             f.style.display = 'block';
             m3=1;
@@ -201,9 +213,11 @@
         if(cha){
             audio.play();
             cha=false;
+            document.getElementById("demons").style.color = "red";
         }else{
             audio.pause();
             cha=true;
+            document.getElementById("demons").style.color = "black";
         }
 
     }
@@ -212,9 +226,11 @@
         if(cha){
             audio.play();
             cha=false;
+            document.getElementById("numb").style.color = "red";
         }else{
             audio.pause();
             cha=true;
+            document.getElementById("numb").style.color = "black";
         }
 
     }
@@ -223,9 +239,11 @@
         if(cha){
             audio.play();
             cha=false;
+            document.getElementById("animals").style.color = "red";
         }else{
             audio.pause();
             cha=true;
+            document.getElementById("animals").style.color = "black";
         }
 
     }
@@ -234,9 +252,11 @@
         if(cha){
             audio.play();
             cha=false;
+            document.getElementById("trop beau").style.color = "red";
         }else{
             audio.pause();
             cha=true;
+            document.getElementById("trop beau").style.color = "black";
         }
 
     }
@@ -329,13 +349,13 @@
     <label > ici mettre le titre des chansons</label><br><input type="text" id="music" placeholder="ici mettre le titre des chanteurs" value="">
     <button type="button" id="buton10" onclick="chant()">validez vos chansons</button>
     <br>
-    <button type="submit" id ="demons" onclick="Soundmod()">musique 1</button>
+    <button type="submit" id ="demons" class="demons" onclick="Soundmod()">musique 1</button>
     <audio src="sanicsrc/demons.mp3" id="audio1" ></audio>
-    <button type="submit" id ="kietu" onclick="Soundmod1()">musique 2</button>
-    <audio src="sanicsrc/kietu.mp3" id="audio2" ></audio>
-    <button type="submit" id ="vitrine" onclick="Soundmod2()">musique 3</button>
-    <audio src="sanicsrc/vitrine.mp3" id="audio3" ></audio>
-    <button type="submit" id ="trop beau" onclick="Soundmod3()">musique 4</button>
+    <button type="submit" id ="numb" class="numb" onclick="Soundmod1()">musique 2</button>
+    <audio src="sanicsrc/numb.mp3" id="audio2" ></audio>
+    <button type="submit" id ="animals" class="animals" onclick="Soundmod2()">musique 3</button>
+    <audio src="sanicsrc/animals.mp3" id="audio3" ></audio>
+    <button type="submit" id ="trop beau" class = "trop beau" onclick="Soundmod3()">musique 4</button>
     <audio src="sanicsrc/trop beau.mp3" id="audio4" ></audio>
     <br>
     <br>
