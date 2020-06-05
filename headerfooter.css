@@ -106,6 +106,7 @@ nav li ul a:hover {
 }.fa-github:hover {
      color: red;
  }
+
 .fa-twitter {
     color: #9674a5;
     -ms-transform: translateY(40%);
