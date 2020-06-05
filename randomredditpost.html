@@ -9,10 +9,10 @@
         }
 
         function fetchPosts() {
-            subreddit=document.getElementById("subreddit-select").value
-            console.log(subreddit)
-            cat=document.getElementById("cat-select").value
-            console.log(cat)
+            subreddit=document.getElementById("subreddit-select").value;
+            console.log(subreddit);
+            cat=document.getElementById("cat-select").value;
+            console.log(cat);
 
 
             fetch(`https://www.reddit.com/r/${subreddit}/${cat}/.json?count=20`)
@@ -21,6 +21,9 @@
                     let n = getRandomInt(20);
                     console.log(n);
                     document.getElementById("image").src=json.data.children[n].data.url;
+                    document.getElementById("image").style.transform = "translate(50%)";
+                    document.getElementById("image").style.maxWidth = "70%";
+                    document.getElementById("image").style.maxHeight = "50%";
 
                 });
 
@@ -55,32 +58,71 @@
 
             })
     </script>
+
+
+    <style>
+        form {
+            position: absolute;
+
+            left: 50%;
+            transform: translate(-50%,50%);
+            margin: 0 auto;
+            width: auto;
+            max-width: 1000px;
+            padding: 1em;
+            border: 1px solid #627279;
+            border-radius: 1em;
+            background-color: white;
+            box-shadow: 2px 2px 20px 0 rgb(4, 4, 112);
+            display: flex;
+            flex-wrap: wrap;
+            transition: transform 2s;
+        }
+
+        form {
+            box-sizing: border-box;
+        }
+
+        form div + div {
+            margin-top: 1em;
+        }
+        image {
+            max-width: 10%;
+
+        }
+
+    </style>
 </head>
 <body>
 <div id="header" class="header"></div>
-<label for="subreddit-select"></label>
-<select name="subreddit" id="subreddit-select">
-    <option value="">--Choississez une option--</option>
-    <option value="ShitPostCrusaders">ShitPostCrusaders</option>
-    <option value="meme">meme</option>
-    <option value="dankmemes">dankmemes</option>
-    <option value="HistoryMemes">HistoryMemes</option>
-    <option value="Animemes">Animemes</option>
-    <option value="funny">funny</option>
-</select>
 
-<label for="cat-select"></label>
-<select name="cat" id="cat-select">
-    <option value="">--Choississez une option--</option>
-    <option value="new">New</option>
-    <option value="hot">hot</option>
-    <option value="top">top</option>
+<form name="form" id="myForm" method="post">
+    <label for="subreddit-select"></label>
+    <select name="subreddit" id="subreddit-select">
+        <option value="">--Choississez une option--</option>
+        <option value="ShitPostCrusaders">ShitPostCrusaders</option>
+        <option value="meme">meme</option>
+        <option value="dankmemes">dankmemes</option>
+        <option value="HistoryMemes">HistoryMemes</option>
+        <option value="Animemes">Animemes</option>
+        <option value="funny">funny</option>
+    </select>
 
-</select>
+    <label for="cat-select"></label>
+    <select name="cat" id="cat-select">
+        <option value="">--Choississez une option--</option>
+        <option value="new">New</option>
+        <option value="hot">hot</option>
+        <option value="top">top</option>
 
+    </select>
+    <button type="button" id="buton" onclick="fetchPosts()">chercher</button>
 
-<button type="button" id="buton" onclick="fetchPosts()">chercher</button>
+</form>
+<br><br><br><br><br><br>
 <img src="" id="image" sizes="(max-width: 500px) 100vw, (max-width: 900px) 50vw, 800px" >
+
+<br><br><br><br><br><br>
 <p id="text"></p>
 <div id="footer" class="footer"></div>
 </body>
