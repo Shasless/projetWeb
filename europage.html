@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        @keyframes slidein1 {
+            from {
+                margin-left: 100%;
+            }
+
+            to {
+                margin-top: 10%;
+                margin-left: 0%;
+
+            }
+        }
+        .anim1{
+            animation-duration: 3s;
+            animation-name: slidein1;
+            display: block;
+        }
+        @keyframes slidein2 {
+            from {
+                margin-left: 0%;
+            }
+
+            to {
+                margin-top: 60%;
+                margin-left: 100%;
+
+            }
+        }
+        .anim2{
+            animation-duration: 4s;
+            animation-name: slidein2;
+            display: block;
+        }
+        @keyframes slidein3 {
+            from {
+                margin-left: 50%;
+            }
+
+            to {
+                margin-top: 100%;
+
+            }
+        }
+        .anim3{
+            animation-duration: 4s;
+            animation-name: slidein3;
+            display: block;
+        }
+        @keyframes slidein4 {
+            from {
+                margin-left: 70%;
+            }
+
+            to {
+                margin-left: 40%;
+                margin-top: 100%;
+
+            }
+        }
+        .anim5{
+            animation-duration: 4s;
+            animation-name: slidein5;
+            display: block;
+        }
+        @keyframes slidein5 {
+            from {
+                margin-left: 50%;
+                margin-top: 100%;
+            }
+
+            to {
+                margin-top: 0%;
+                margin-right: 0%;
+
+            }
+        }
+        .anim4{
+            animation-duration: 1s;
+            animation-name: slidein4;
+            display: block;
+        }
+
+        @keyframes slidein6 {
+            from {
+                margin-left: 90%;
+                margin-top: 0%;
+            }
+
+            to {
+                margin-top: 100%;
+                margin-right: 20%;
+
+            }
+        }
+        .anim6{
+            animation-duration: 4s;
+            animation-name: slidein4;
+            display: block;
+        } @keyframes slidein7 {
+              from {
+                  margin-left: 50%;
+                  margin-top: 100%;
+              }
+
+              to {
+                  margin-top: 0%;
+                  margin-right: 20%;
+
+              }
+          }
+        .anim7{
+            animation-duration: 1s;
+            animation-name: slidein4;
+            display: block;
+        }
+        @keyframes slidein8 {
+            from {
+                margin-left: 10%;
+            }
+
+            to {
+                margin-right: 100%;
+
+            }
+        }
+        .anim8{
+            animation-duration: 4s;
+            animation-name: slidein4;
+            display: block;
+        }
+        @keyframes slidein9 {
+            from {
+                margin-left: 90%;
+                margin-top: 100%;
+            }
+
+            to {
+                margin-top: 90%;
+                margin-right: 90%;
+
+            }
+        }
+        .anim9{
+            animation-duration: 3s;
+            animation-name: slidein4;
+            display: block;
+        }
+        @keyframes slidein10 {
+            from {
+                margin-left: 22%;
+                margin-top: 22%;
+            }
+
+            to {
+                margin-top: 100%;
+                margin-right: 100%;
+
+            }
+        }
+        .anim10{
+            animation-duration: 4s;
+            animation-name: slidein4;
+            display: block;
+        }
+        @keyframes slidein11 {
+            from {
+                margin-left: 0%;
+                margin-top: 0%;
+            }
+
+            to {
+                margin-top: 100%;
+                margin-right: 100%;
+
+            }
+        }
+        .anim11{
+            animation-duration: 2s;
+            animation-name: slidein4;
+            display: block;
+        }
+
+
+
+
+
+
+
+
+        img{
+            position: absolute;
+            margin-top: -8%;
+        }
+        .notransition {
+            background: #272931;
+            -webkit-transition: none !important;
+            -moz-transition: none !important;
+            -o-transition: none !important;
+            transition: none !important;
+            display: none;
+        }
+        html, body {margin: 0; height: 100%; overflow: hidden}
+
+    </style>
+    <script>
+
+        function removeallT() {
+            document.getElementById("trueno").style.display= "block";
+            for (let i = 1; i < 12; i++) {
+                document.getElementById("trueno").classList.remove('anim'+i);
+            }
+            document.getElementById("trueno").classList.add('notransition');
+            document.getElementById("trueno").offsetHeight;
+            document.getElementById("trueno").classList.remove('notransition');
+
+        }
+        function removeallR() {
+            document.getElementById("rx7").style.display= "block";
+            for (let i = 1; i < 12; i++) {
+                document.getElementById("rx7").classList.remove('anim'+i);
+            }
+            document.getElementById("rx7").classList.add('notransition');
+            document.getElementById("rx7").offsetHeight;
+            document.getElementById("rx7").classList.remove('notransition');
+
+        }
+
+        let Timeradd = setInterval(function () {
+            let n = getRandomInt(11);
+            console.log(n);
+            removeallT();
+            document.getElementById("trueno").classList.add('anim'+n);
+        }, 2000);
+        let Timeradd2 = setInterval(function () {
+            let n = getRandomInt(11);
+            console.log(n);
+            removeallR();
+            document.getElementById("rx7").classList.add('anim'+n);
+        }, 2500);
+
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * Math.floor(max));
+        }
+    </script>
+    <link rel="stylesheet" type="text/css" href="headerfooter.css">
+    <script src="https://kit.fontawesome.com/9e1096e656.js" crossorigin="anonymous"></script>
+
+    <script>
+        fetch('footer.html')
+            .then(function (response) {
+
+                return response.text();
+
+            })
+            .then(function (body) {
+                document.getElementById('footer').innerHTML=body;
+
+            })
+
+        fetch('header.html')
+            .then(function (response) {
+                return response.text();
+
+            })
+            .then(function (body) {
+                document.getElementById("header").innerHTML=body;
+
+            })
+    </script>
+</head>
+<body>
+<div id="header" class="header"></div>
+<img src="eurosource/trueno.png" width="8%" height="8%" id ="trueno"  >
+    <img src="eurosource/rx-7.png" width="8%" height="9%" id ="rx7"  >
+<div style='text-align:center'>
+<iframe style='padding-top: 5%' id = "eurobeat" width="40%" height="500px" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/338957039&color=%2322120c&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/themoomin" title="TheMoomin" target="_blank" style="color: #cccccc; text-decoration: none;">TheMoomin</a> · <a href="https://soundcloud.com/themoomin/sets/eurobeat" title="Eurobeat" target="_blank" style="color: #cccccc; text-decoration: none;">Eurobeat</a></div>
+</div>
+<div id="footer" class="footer"></div>
+</body>
+</html>
