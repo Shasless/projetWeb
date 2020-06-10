@@ -7,13 +7,18 @@
 <style>
     body{
         text-align: center;
-        color:blue;
-        background: #ff0000;
+        color:black;
+        background-image:url(https://i.ytimg.com/vi/VdaoCzFRhZY/maxresdefault.jpg);
+        background-repeat:no-repeat;
+        background-position: top;
+        background-size: 100%;
+        background-attachment: fixed;
     }
     p{
         font-size: xx-large;
         font-family: "arial";
         text-align: center;
+        color: blue;
     }
     img.supersanik{
         position:absolute;
@@ -82,6 +87,7 @@
         }
         if (test === 10){
             alert("sanic s'énerve, je vous demande de vous arreter");
+            v="sanicsrc/sonic.gif";
 
         }
         if (test === 12){
@@ -89,9 +95,18 @@
         }
         if (test === 15){
             alert("bas bravo nils sanic est énervé");
-            v="sanicsrc/sonic.gif";
+            v="sanicsrc/sanicm.png";
             var nuk = document.getElementById("smouth");
             nuk.style.display = 'block';
+            var audio = document.getElementById("audio5");
+            if(cha){
+                audio.play();
+                cha=false;
+            }else{
+                audio.pause();
+                cha=true;
+            }
+
         }
         x.setAttribute("src", v);
 
@@ -139,12 +154,16 @@
         }
     }, 1000);
     function victoire(){
+        var a = document.getElementById("robotnik");
+        var b = a.getAttribute("src");
         var e = document.getElementById("combat").value;
+        var ad = document.getElementById("supersanik");
+        var bc = ad.getAttribute("src");
         if (tempsres > 0 && e=== 'sanik,est,le,plus,fort,du,monde,plus,que,adrien'){
             document.getElementById("fin").innerHTML = "sanik win";
-            var a = document.getElementById("robotnik");
-            var b = a.getAttribute("src");
-            b="supersanik.png";
+            var audio = document.getElementById("audio6");
+            audio.play();
+            b="sanicsrc/supersanik.png";
             a.setAttribute("src", b);
             oui = 1;
             document.getElementById("supersanik").style.transform = "translateX(1000px)";
@@ -153,10 +172,10 @@
         }
         if (tempsres > 0 && e=== 'robotnik,est,le,plus,fort,du,monde,plus,que,josian'){
             document.getElementById("fin").innerHTML = "robotnik win";
-            var ad = document.getElementById("supersanik");
-            var bc = ad.getAttribute("src");
-            bc="robotnik.png";
+            bc="sanicsrc/robotnik.png";
             ad.setAttribute("src", bc);
+            var audio = document.getElementById("audio7");
+            audio.play();
             oui = 1;
             document.getElementById("robotnik").style.transform = "translateX(1000px)";
             document.getElementById("combat").value="";
@@ -357,6 +376,9 @@
     <audio src="sanicsrc/animals.mp3" id="audio3" ></audio>
     <button type="submit" id ="trop beau" class = "trop beau" onclick="Soundmod3()">musique 4</button>
     <audio src="sanicsrc/trop beau.mp3" id="audio4" ></audio>
+    <audio src="sanicsrc/ayaya.mp3" id="audio5" ></audio>
+    <audio src="sanicsrc/ouf.mp3" id="audio6" ></audio>
+    <audio src="sanicsrc/ezwin.mp3" id="audio7" ></audio>
     <br>
     <br>
     <br>
