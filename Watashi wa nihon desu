@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weeb</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <style>
+        body {
+            background-image:url(https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/War_flag_of_the_Imperial_Japanese_Army.svg/langfr-900px-War_flag_of_the_Imperial_Japanese_Army.svg.png);
+            background-repeat:no-repeat;
+            background-position: top;
+            background-size: 100%;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .mot{
+            position: absolute;
+            top: 67.5%;
+            left: 49%;
+            transform: translate(-50%, -50%);
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .mot .lettre{
+            list-style: none;
+            color: #484848;
+            font-family: Arial;
+            font-size: 700%;
+            animation: flash 0.6s linear infinite;
+        }
+        @keyframes flash {
+            0%{color: #484848; text-shadow: none;}
+            90%{color: #484848; text-shadow: none;}
+            100%{color: fuchsia; text-shadow: 0 0 7px #ff69b4, 0 0 50px #ffc0cb;}
+        }
+        .mot .lettre:nth-child(1){
+            animation-delay: 0.1s;
+        }
+        .mot .lettre:nth-child(2){
+            animation-delay: 0.2s;
+        }
+        .mot .lettre:nth-child(3){
+            animation-delay: 0.3s;
+        }
+        .mot .lettre:nth-child(4){
+            animation-delay: 0.4s;
+        }
+        .mot .lettre:nth-child(5){
+            animation-delay: 0.5s;
+        }
+        .pulseit{
+            -webkit-animation: pulse linear .5s infinite;
+            animation: pulse linear .5s infinite;
+
+        }
+        @-webkit-keyframes pulse {
+            0% { width:200px; }
+            50% { width:340px; }
+            100% { width:200px; }
+        }
+        @keyframes pulse {
+            0% { width:200px; }
+            50% { width:340px; }
+            100% { width:200px; }
+        }
+        .moche{
+            position: absolute;
+            top: 100%;
+            left: 40%;
+        }
+        .indila{
+            -webkit-animation:spin 1s linear infinite;
+            -moz-animation:spin 1s linear infinite;
+            animation:spin 1s linear infinite;
+        }
+        @-moz-keyframes spin {
+            100% { -moz-transform: rotate(360deg); }
+        }
+        @-webkit-keyframes spin {
+            100% { -webkit-transform: rotate(360deg); }
+        }
+        @keyframes spin {
+            100% { -webkit-transform: rotate(360deg); transform:rotate(360deg);}
+        }
+        .gif1{
+            position: absolute;
+            top: 11%;
+            left: 0%;
+        }
+        /*Naruto runner*/
+        .imganim
+        {
+            height:30%;
+            top: 160%;
+            position:absolute;
+            image-orientation: flip;
+            -webkit-animation:myfirst 5s infinite; /* Chrome, Safari, Opera */
+            animation:myfirst 5s infinite;
+        }
+
+        /* Chrome, Safari, Opera */
+        @-webkit-keyframes myfirst
+        {
+            0%   { left:85%}
+            50%  {left:0%; margin-left:0%}
+            100% {left:85%; transform: scaleX(-1)}
+        }
+        /*smoke bomb*/
+        .nuage{
+            position: absolute;
+            bottom: -120%;
+            left: 47%;
+            transform: translateX(-50%);
+            margin: 0;
+            padding: 0;
+        }
+        .fumé{
+            position: absolute;
+            list-style: none;
+            width: 80px;
+            height: 80px;
+            background: #262626;
+            border-radius: 50%;
+        }
+        .fumé:nth-child(even){
+            animation: animateEven 2.8s linear infinite;
+        }
+        .fumé:nth-child(odd){
+            animation: animateOdd 2.8s linear infinite;
+        }
+        @keyframes animateEven {
+            0%
+            {
+                transform: translate(0,0) scale(1);
+                opacity: 1;
+                filter: blur(5px);
+            }
+            100%{
+                transform: translate(100px,-500px) scale(3);
+                opacity: 0;
+                filter: blur(10px);
+            }
+        }
+        @keyframes animateOdd {
+            0%
+            {
+                transform: translate(0,0) scale(1);
+                opacity: 1;
+                filter: blur(5px);
+            }
+            100%{
+                transform: translate(-100px,-500px) scale(3);
+                opacity: 0;
+                filter: blur(10px);
+            }
+        }
+        .fumé:nth-child(1){
+            animation-delay: 0s;
+        }
+        .fumé:nth-child(2){
+            animation-delay: 0.4s;
+        }
+        .fumé:nth-child(3){
+            animation-delay: 0.8s;
+        }
+        .fumé:nth-child(4){
+            animation-delay: 1.2s;
+        }
+        .fumé:nth-child(5){
+            animation-delay: 1.6s;
+        }
+        .fumé:nth-child(6){
+            animation-delay: 2s;
+        }
+        .fumé:nth-child(7){
+            animation-delay: 2.4s;
+        }
+        .fumé:nth-child(8){
+            animation-delay: 2.8s;
+        }
+        /*ninja*/
+        .ninja{
+            position: absolute;
+            height: 30%;
+            bottom: -128%;
+            left: 43%;
+            -webkit-animation:disparition 4s linear infinite;
+            animation: disparition 4s linear infinite;
+        }
+        @keyframes disparition {
+            0% {
+                opacity: 1;
+            }
+            40%{
+                opacity: 0;
+            }
+            60%{
+                opacity: 0;
+            }
+            100%{
+                opacity: 1;
+            }
+        }
+        /*images sushi*/
+        .sushi1{
+            position: absolute;
+            bottom: -128%;
+            left: 3%;
+        }
+        .sushi2{
+            position: absolute;
+            bottom: -128%;
+            left: 20%;
+        }
+        .sushi3{
+            position: absolute;
+            bottom: -128%;
+            left: 60%;
+        }.sushi4{
+             position: absolute;
+             bottom: -128%;
+             left: 77%;
+         }
+        .Adrien{
+            position: absolute;
+            top: 43.5%;
+            left: 72%;
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+     <ul class="mot">
+         <li class="lettre">J</li>
+         <li class="lettre">A</li>
+         <li class="lettre">P</li>
+         <li class="lettre">O</li>
+         <li class="lettre">N</li>
+     </ul>
+     <div class="moche"><p class="indila"><img class="pulseit" src="https://img.ohmymag.com/article/480/camille-muffat/le-japonais-sho-sakai-a-tout-donne-pour-son-plongeon-cr-abaca_f80b10e3faa35689ec82c94adef8ad276149c058.jpg"  style="border-radius: 50%"/></div></p>
+     <div class="gif1"><img src="https://cdn140.picsart.com/321921542060201.gif?to=min&r=640" /></div>
+     <div class="Adrien"><img src="https://thumbs.gfycat.com/FlatPotableCowbird-small.gif" /></div>
+     <img id="naruto" class="imganim" alt="" src="https://i.ya-webdesign.com/images/naruto-running-png-10.gif" />
+     <ul class="nuage">
+         <li class="fumé"></li>
+         <li class="fumé"></li>
+         <li class="fumé"></li>
+         <li class="fumé"></li>
+         <li class="fumé"></li>
+         <li class="fumé"></li>
+         <li class="fumé"></li>
+         <li class="fumé"></li>
+     </ul>
+     <img id="ninja" class="ninja" src="https://stickershop.line-scdn.net/stickershop/v1/product/1408197/LINEStorePC/main.png;compress=true"/>
+     <img class="sushi1" src="https://i.pinimg.com/originals/56/06/c7/5606c7ba00e7e336f635111f122dafdc.gif"/>
+     <img class="sushi2" src="https://i.pinimg.com/originals/56/06/c7/5606c7ba00e7e336f635111f122dafdc.gif"/>
+     <img class="sushi3" src="https://i.pinimg.com/originals/56/06/c7/5606c7ba00e7e336f635111f122dafdc.gif"/>
+     <img class="sushi4" src="https://i.pinimg.com/originals/56/06/c7/5606c7ba00e7e336f635111f122dafdc.gif"/>
+     <canvas id="confetti"></canvas>
+     <script src="weeb%20fonction.js"></script>
+</body>
+</html>
