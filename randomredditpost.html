@@ -22,8 +22,10 @@
                     console.log(n);
                     document.getElementById("image").src=json.data.children[n].data.url;
                     document.getElementById("image").style.transform = "translate(50%)";
-                    document.getElementById("image").style.maxWidth = "70%";
-                    document.getElementById("image").style.maxHeight = "50%";
+                    let a= innerWidth/3;
+                    document.getElementById("image").style.Width = a;
+                    document.getElementById("image").style.height = "auto";
+
 
                 });
 
@@ -88,7 +90,8 @@
             margin-top: 1em;
         }
         image {
-            max-width: 10%;
+            height: auto;
+            width: 400px;
 
         }
 
