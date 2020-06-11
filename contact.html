@@ -1,10 +1,15 @@
-<html>
+
+<!DOCTYPE html>
+<html lang="fr">
 <head>
+    <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="headerfooter.css">
     <script src="https://kit.fontawesome.com/9e1096e656.js" crossorigin="anonymous"></script>
+
     <script>
         fetch('footer.html')
             .then(function (response) {
+
                 return response.text();
 
             })
@@ -23,13 +28,173 @@
 
             })
     </script>
+    <style>
+
+        .main-box {
+            padding: 15% 0 20%;
+        }
+
+        .main-text {
+            line-height: 23px;
+            box-sizing: border-box;
+            border: 0;
+            font-family: "ProximaNova Semibold", serif;
+            font-size: 100%;
+            font-style: inherit;
+            font-weight: inherit;
+            margin: 0;
+            outline: 0;
+            vertical-align: baseline;
+            display: flex;
+            -webkit-box-orient: vertical;
+            flex-direction: column;
+            -webkit-box-align: center;
+            align-items: center;
+            padding: 0 50px;
+            max-width: 100%;
+        }
+
+        .main-text h1 {
+            box-sizing: border-box;
+            border: 0;
+            font-style: inherit;
+            margin: 0;
+            outline: 0;
+            vertical-align: baseline;
+            font-family: "Avenir Book", sans-serif;
+            color: rgba(173, 36, 36, 0.84);
+            padding: 20px 0 10px 0;
+            font-weight: 600;
+            text-transform: none;
+            font-size: 38px;
+            line-height: 1.3;
+            text-align: center;
+        }
+
+
+
+
+        .Section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 0 40px;
+        }
+
+        .Section:after {
+            content: "";
+            display: block;
+            width: 25%;
+            margin: 20px 0;
+        }
+
+        .SectionInner {
+            display: flex;
+            align-items: center;
+            max-width: 1440px;
+            flex-direction: row-reverse;
+        }
+
+        .SectionImg {
+            line-height: 23px;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .SectionImg img {
+            width: 500px;
+            height: auto;
+        }
+
+        .SectionText {
+            line-height: 23px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding-right: 100px;
+        }
+
+        .SectionText h1 {
+            font-family: "Avenir Book", serif;
+            color: #050202;
+            padding: 20px 0 10px 0;
+            font-size: 26px;
+            font-weight: 500;
+            line-height: 1.5em;
+        }
+
+        .SectionText p {
+            font-family: Avenir Light, serif;
+            font-size: 19px;
+            color: #0d8dc9;
+            line-height: 1.8em;
+            margin-top: 5px;
+        }
+
+
+        body {
+            overflow-y: scroll;
+            -ms-overflow-style: none;
+        }
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+
+    </style>
+
 </head>
-<body>
 
+<body id="body">
 <div id="header" class="header"></div>
+<div class="scroll-windows" >
+    <div class="main-box">
+        <div class="main-text"><h1>Contact</h1></div>
+    </div>
+    <section class="Section">
+        <div class="SectionInner" id="Liste-Histoire">
+            <div class="SectionImg"><img src="sourcecontact/adrien.jpg"
+                                         alt="Adrien"></div>
+            <div class="SectionText"><h1>Adrien GIRARD</h1>
+                <p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
 
-<div>
-    il faudra faire un petit texte de contact qui somme nous
+                </p></div>
+        </div>
+    </section>
+    <section class="Section">
+        <div class="SectionInner">
+            <div class="SectionText" style="flex: 42 1 0;"><h1>Josian BOYARAM</h1>
+                <p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+
+                </p></div>
+            <div class="SectionImg" style="flex: 58 1 0;"><img src="sourcecontact/josian.png"
+                                                               alt="Josian"></div>
+
+        </div>
+    </section>
+    <section class="Section">
+        <div class="SectionInner">
+            <div class="SectionImg" style="flex: 60 1 0;"><img src="sourcecontact/julien.png"
+                                                               alt="Julien"></div>
+            <div class="SectionText" style="flex: 40 1 0;"><h1>Julien FLAMARION</h1>
+                <p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+
+                </p></div>
+        </div>
+    </section>
+    <section class="Section">
+        <div class="SectionInner">
+            <div class="SectionText"><h1>Yann COURTEMANCHE</h1>
+                <p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+
+                </p></div>
+            <div class="SectionImg"><img src="sourcecontact/yann.png"
+                                         alt="Yann"></div>
+        </div>
+    </section>
 
 
 </div>
