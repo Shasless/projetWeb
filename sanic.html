@@ -195,33 +195,30 @@
         var cc =document.getElementById("dance");
         cc.style.display= 'block';
     }
+    let yu = 0;
     function chant(){
         var l = document.getElementById("music").value;
-        let m1=0;
-        let m2=0;
-        let m3=0;
-        let m4=0;
         if (l=== 'demons'){
             var d = document.getElementById("tail");
             d.style.display = 'block';
-            m1=1;
+            yu=yu+1;
         }
         if (l=== 'numb'){
             var k = document.getElementById("sanic3");
             k.style.display = 'block';
-            m2=1;
+            yu=yu+1;
         }
         if(l=== 'animals'){
             var f = document.getElementById("shadow");
             f.style.display = 'block';
-            m3=1;
+            yu=yu+1;
         }
         if(l=== 'trop beau'){
             var w = document.getElementById("fille");
             w.style.display = 'block'
-            m4=1;
+            yu=yu+1;
         }
-        if (m1==1 && m2==1 && m3==1 && m4==1){
+        if (yu===4){
             document.getElementById("stop").innerHTML = "vous avez libérer sanic et ses amis : )";
         }
         document.getElementById("music").value="";
