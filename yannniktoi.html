@@ -21,6 +21,7 @@
 
                 tourne = true;
                 document.getElementById("connard").play();
+                alert("Vous avez cliquez, ce qui fait de vous un CONNARD !")
             }
             else if (tourne === true) {
                 document.getElementById("image1").classList.remove("rotate");
@@ -38,6 +39,7 @@
 
             }
 
+
         }
     </script>
     <style type="text/css">
@@ -51,22 +53,27 @@
 
         }
         button:hover {
-            background-color: lightgray;
+            background-image: url('aliens.jpg');
+            background-image: no-repeat;
         }
         body {
             background-color: white;
         }
-        table,td {
-            border: 3px solid black;
-            background-color: lightgray;
+        table,td,tr {
+            border: 10px solid black;
+            border-radius: 10px;
+            background-color:transparent;
             table-layout: fixed;
-            width: 50px;
+            width: 15px;
             font-family: Calibri;
-            font-size: 50;
+            font-size: 25;
         }
         table {
             border-collapse: collapse;
             width: 100%;
+        }
+        .titre{
+            color: black;
         }
         .rotate {
             -webkit-animation: spin .8s infinite linear;
@@ -102,7 +109,10 @@
                 transform:rotate(360deg);
             }
         }
-
+        h1{
+            font-color: black;
+            font-size: 30;
+        }
         audio{
             display: none;
         }
@@ -184,6 +194,9 @@
     </script>
 
 </head>
+<header>
+    
+</header>
 <body>
 
 <div id="header" class="header"></div>
@@ -192,32 +205,34 @@
     <button class="myButton" onclick="tourner()" >NE PAS CLIQUEZ ICI</button>
     <br>
     <a href="https://youtu.be/dQw4w9WgXcQ">
-        Tout d'abord, une petite vidéo pour comprendre le contexte
+        <h1>Tout d'abord, une petite vidéo pour comprendre le contexte</h1>
     </a>
     <br>
-    <audio id="connard" src="tablememe/connard.mp3" controls play loop></audio>
+    <h1>Intro :
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</h1>
+    <audio id="connard" src="connard.mp3" controls play loop></audio>
     <table id="Tableau" >
         <tr>
-            <td>Nom du meme</td>
-            <td>Date d'apparition</td>
-            <td>Lien vers l'original</td>
-            <td>Image du meme</td>
+            <td class="titre"><b>Nom du meme</b></td>
+            <td class="titre"><b>Date d'apparition</b></td>
+            <td class="titre"><b>Lien vers l'original</b></td>
+            <td class="titre"><b>Image du meme</b></td>
         </tr>
         <tr>
             <td>Pepe the frog</td>
             <td>2008</td>
-            <td><a href="https://youtu.be/dQw4w9WgXcQ">
+            <td><a href="https://youtu.be/qTksCYUgI7s">
                 Voir ici !
             </a></td>
-            <td><img id="image1"src="tablememe/pepe.jpg"/></td>
+            <td><img id="image1"src="pepe.jpg"/></td>
         </tr>
         <tr>
             <td>Nyan Cat</td>
             <td>5 avril 2011</td>
-            <td><a href="https://youtu.be/dQw4w9WgXcQ">
+            <td><a href="https://youtu.be/wZZ7oFKsKzY">
                 Voir ici !
             </a></td>
-            <td><img id="image2" src="tablememe/nyan cat.gif"/></td>
+            <td><img id="image2" src="nyan cat.gif"/></td>
         </tr>
         <tr>
             <td>Shooting Stars</td>
@@ -225,23 +240,23 @@
             <td><a href="https://youtu.be/feA64wXhbjo">
                 Voir ici !
             </a></td>
-            <td><img id="image3" src="tablememe/shooting stars meme.gif"></td>
+            <td><img id="image3" src="shooting stars meme.gif"></td>
         </tr>
         <tr>
             <td>Ugandan Knuckles</td>
             <td>2016</td>
-            <td><a href="https://youtu.be/dQw4w9WgXcQ">
+            <td><a href="https://youtu.be/LD8P8Mq3rVU">
                 Voir ici !
             </a></td>
-            <td><img id="image4" src="tablememe/ugandanknuck.jpg"></td>
+            <td><img id="image4" src="ugandanknuck.jpg"></td>
         </tr>
         <tr>
             <td>STONKS</td>
             <td>5 Septembre 2017</td>
-            <td><a href="https://youtu.be/dQw4w9WgXcQ">
+            <td><a href="https://youtu.be/SMRg9mKcyhM">
                 Voir ici !
             </a></td>
-            <td><img id="image5" src="tablememe/stonks.jpg"></td>
+            <td><img id="image5" src="stonks.jpg"></td>
         </tr>
         <tr>
             <td>Deja Vu</td>
@@ -249,7 +264,7 @@
             <td><a href="https://youtu.be/dv13gl0a-FA">
                 Voir ici !
             </a></td>
-            <td><img id="image6" src="tablememe/initial.jpg"></td>
+            <td><img id="image6" src="initial.jpg"></td>
         </tr>
         <tr>
             <td>"Pen Pinapple Apple Pen"</td>
@@ -257,15 +272,15 @@
             <td><a href="https://youtu.be/0E00Zuayv9Q">
                 Voir ici !
             </a></td>
-            <td><img id="image7" src="tablememe/PPAP.jpg"></td>
+            <td><img id="image7" src="PPAP.jpg"></td>
         </tr>
         <tr>
             <td>Suprised Pikachu</td>
             <td>2018</td>
-            <td><a href="https://youtu.be/r97Z1Gx2KM4">
+            <td><a href="https://youtu.be/IfQumd_o0Gk">
                 Voir ici !
             </a></td>
-            <td><img id="image8" src="tablememe/pikachu.jpg"></td>
+            <td><img id="image8" src="pikachu.jpg"></td>
         </tr>
         <tr>
             <td>IMMA FIRIN MAH' LAZER</td>
@@ -273,7 +288,7 @@
             <td><a href="https://youtu.be/c7r8FKVMRPY">
                 Voir ici !
             </a></td>
-            <td><img id="image9" src="tablememe/Lazer.png"></td>
+            <td><img id="image9" src="Lazer.png"></td>
         </tr>
 
     </table>
