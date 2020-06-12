@@ -1,6 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" type="text/css" href="headerfooter.css">
+    <script src="https://kit.fontawesome.com/9e1096e656.js" crossorigin="anonymous"></script>
+    <script>
+        fetch('footer.html')
+            .then(function (response) {
+
+                return response.text();
+
+            })
+            .then(function (body) {
+                document.getElementById('footer').innerHTML=body;
+
+            })
+
+        fetch('header.html')
+            .then(function (response) {
+                return response.text();
+
+            })
+            .then(function (body) {
+                document.getElementById("header").innerHTML=body;
+
+            })
+    </script>
     <meta charset="UTF-8">
     <title>Weeb</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -243,6 +267,7 @@
 
 </head>
 <body>
+<div id="header" class="header"></div>
      <ul class="mot" >
          <li class="lettre">J</li>
          <li class="lettre">A</li>
@@ -271,5 +296,6 @@
      <img class="sushi4" src="https://i.pinimg.com/originals/56/06/c7/5606c7ba00e7e336f635111f122dafdc.gif" style="width: 15%; height: auto"/>
      <canvas id="confetti"></canvas>
      <script src="weeb%20fonction.js"></script>
+<div id="footer" class="footer"></div>
 </body>
 </html>
