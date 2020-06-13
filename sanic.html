@@ -7,15 +7,25 @@
 <style>
     body{
         text-align: center;
+        background: linear-gradient(#ffffff, #7694ba);
+        overflow-x: hidden;
+        min-height: 100vh;
+
     }
     p{
-        font-family: avenir-light, Serif;
+        font-size: xx-large;
+        font: italic 1.2em "Fira Sans", serif;
         text-align: center;
         color: black;
+    }
+    img{
+        width : 50vw;
     }
     img.supersanik{
         position:absolute;
         right: 0px;
+        width : 20vw;
+
     }
     .fight{
         display : none;
@@ -23,6 +33,7 @@
     img.robotnik{
         position:absolute;
         left: 0px;
+        width : 20vw;
     }
     .smouth{
         display : none;
@@ -47,15 +58,19 @@
     }
     .tail{
         display : none;
+        width : 25vw;
     }
     .shadow{
         display : none;
+        width : 25vw;
     }
     .sanic3{
         display : none;
+        width : 25vw;
     }
     .fille{
         display : none;
+        width : 25vw;
     }
     #tail, #sanic3, #shadow, #fille
      {
@@ -353,7 +368,7 @@
 <br>
 <br>
 <div class="dance" id="dance">
-    <p>Vous allez devoir libérer sanic et ses amis. Pour cela c'est très simple, il faut que vous trouviez les chansons que robotnik vas vous faire écouter</p>
+    <p id="stop">Vous allez devoir libérer sanic et ses amis. Pour cela c'est très simple, il faut que vous trouviez les chansons que robotnik vas vous faire écouter</p>
     <br>
     <label > ici mettre le titre des chansons</label><br><input type="text" id="music" placeholder="ici mettre le titre des chanteurs" value="">
     <button type="button" id="buton10" onclick="chant()">validez vos chansons</button>
@@ -378,7 +393,6 @@
     <img src="sanicsrc/fille.png" height="200px" width="480px"  id="fille" class="fille" />
     <br>
     <br>
-    <p id="stop"></p>
     <br>
     <br>
     <br>
