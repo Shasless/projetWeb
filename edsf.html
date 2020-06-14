@@ -1,0 +1,371 @@
+
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="headerfooter.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>Une petite histoire des memes</title>
+    <script type="text/javascript">
+        let tourne=false;
+        function tourner(){
+            if (tourne === false) {
+                document.getElementById("image1").classList.add("rotate");
+                document.getElementById("image2").classList.add("rotate");
+                document.getElementById("image3").classList.add("rotate");
+                document.getElementById("image4").classList.add("rotate");
+                document.getElementById("image5").classList.add("rotate");
+                document.getElementById("image6").classList.add("rotate");
+                document.getElementById("image7").classList.add("rotate");
+                document.getElementById("image8").classList.add("rotate");
+                document.getElementById("image9").classList.add("rotate");
+                document.getElementById("Tableau").classList.add("rotate_tableau");
+
+                tourne = true;
+                document.getElementById("MV").play();
+                alert("Vous avez cliquez, ce qui fait de vous un CONNARD !")
+            }
+            else if (tourne === true) {
+                document.getElementById("image1").classList.remove("rotate");
+                document.getElementById("image2").classList.remove("rotate");
+                document.getElementById("image3").classList.remove("rotate");
+                document.getElementById("image4").classList.remove("rotate");
+                document.getElementById("image5").classList.remove("rotate");
+                document.getElementById("image6").classList.remove("rotate");
+                document.getElementById("image7").classList.remove("rotate");
+                document.getElementById("image8").classList.remove("rotate");
+                document.getElementById("image9").classList.remove("rotate");
+                document.getElementById("Tableau").classList.remove("rotate_tableau");
+                tourne = false;
+                document.getElementById("connard").pause();
+
+            }
+
+
+        }
+    </script>
+    <style type="text/css">
+        img{
+            display: inline-block;
+            position: relative;
+            width: 20vw;
+        }
+        button {
+            font-family:"Comic Sans MS";
+            margin: 0 auto;
+
+        }
+        button:hover {
+            background-image: url('aliens.jpg');
+            background-image: no-repeat;
+        }
+        body {
+
+            background: linear-gradient(#ffffff, #7694ba);
+        }
+        table,td,tr {
+            border: 10px solid black;
+            border-radius: 10px;
+            background-color:transparent;
+            table-layout: fixed;
+            width: 15px;
+            font-family: Calibri;
+            font-size: 25;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        .titre{
+            color: black;
+        }
+        .rotate {
+            -webkit-animation: spin .8s infinite linear;
+            animation: spin .8s infinite linear;
+        }
+        @-webkit-keyframes spin {
+            100% { -webkit-transform: rotate(360deg); }
+        }
+        @-moz-keyframes spin {
+            100% { -moz-transform: rotate(360deg); }
+        }
+        @keyframes spin {
+            100% {
+                -moz-transform:rotate(360deg);
+                -o-transform:rotate(360deg);
+                transform:rotate(360deg);
+            }
+        }
+        .rotate_tableau {
+            -webkit-animation: spin_tab 5s infinite linear;
+            animation: spin_tab 5s infinite linear;
+        }
+        @-webkit-keyframes spin_tab {
+            100% { -webkit-transform: rotate(360deg); }
+        }
+        @-moz-keyframes spin_tab {
+            100% { -moz-transform: rotate(360deg); }
+        }
+        @keyframes spin_tab {
+            100% {
+                -moz-transform:rotate(360deg);
+                -o-transform:rotate(360deg);
+                transform:rotate(360deg);
+            }
+        }
+        h1{
+            font-color: black;
+            font-size: 30;
+        }
+        audio{
+            display: none;
+        }
+        .myButton {
+            box-shadow:inset 0px 1px 0px 0px #f29c93;
+            background:linear-gradient(to bottom, #fe1a00 5%, #ce0100 100%);
+            background-color:#fe1a00;
+            border:12px solid #d83526;
+            display:inline-block;
+            cursor:pointer;
+            color:#ffffff;
+            font-family:Arial;
+            font-size:28px;
+            font-weight:bold;
+            padding:32px 76px;
+            text-decoration:none;
+            text-shadow:0px 1px 0px #b23e35;
+            -webkit-animation: glowing 1500ms infinite;
+            -moz-animation: glowing 1500ms infinite;
+            -o-animation: glowing 1500ms infinite;
+            animation: glowing 1500ms infinite;
+            margin: 0;
+            position: absolute;
+            left: 40%;
+        }
+        @-webkit-keyframes glowing {
+            0% { background-color: #B20000; -webkit-box-shadow: 0 0 3px #B20000; }
+            50% { background-color: #FF0000; -webkit-box-shadow: 0 0 40px #FF0000; }
+            100% { background-color: #B20000; -webkit-box-shadow: 0 0 3px #B20000; }
+        }
+
+        @-moz-keyframes glowing {
+            0% { background-color: #B20000; -moz-box-shadow: 0 0 3px #B20000; }
+            50% { background-color: #FF0000; -moz-box-shadow: 0 0 40px #FF0000; }
+            100% { background-color: #B20000; -moz-box-shadow: 0 0 3px #B20000; }
+        }
+
+        @-o-keyframes glowing {
+            0% { background-color: #B20000; box-shadow: 0 0 3px #B20000; }
+            50% { background-color: #FF0000; box-shadow: 0 0 40px #FF0000; }
+            100% { background-color: #B20000; box-shadow: 0 0 3px #B20000; }
+        }
+
+        @keyframes glowing {
+            0% { background-color: #B20000; box-shadow: 0 0 3px #B20000; }
+            50% { background-color: #FF0000; box-shadow: 0 0 40px #FF0000; }
+            100% { background-color: #B20000; box-shadow: 0 0 3px #B20000; }
+        }
+        .myButton:hover {
+            background:linear-gradient(to bottom, #ce0100 5%, #fe1a00 100%);
+            background-color:#ce0100;
+        }
+        .myButton:active {
+            position:relative;
+            top:1px;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="headerfooter.css">
+    <script src="https://kit.fontawesome.com/9e1096e656.js" crossorigin="anonymous"></script>
+
+    <script>
+        fetch('footer.html')
+            .then(function (response) {
+
+                return response.text();
+
+            })
+            .then(function (body) {
+                document.getElementById('footer').innerHTML=body;
+
+            })
+
+        fetch('header.html')
+            .then(function (response) {
+                return response.text();
+
+            })
+            .then(function (body) {
+                document.getElementById("header").innerHTML=body;
+
+            })
+    </script>
+    <link rel="stylesheet" type="text/css" href="headerfooter.css">
+    <script src="https://kit.fontawesome.com/9e1096e656.js" crossorigin="anonymous"></script>
+    <script>
+        fetch('footer.html')
+            .then(function (response) {
+
+                return response.text();
+
+            })
+            .then(function (body) {
+                document.getElementById('footer').innerHTML=body;
+
+            })
+
+        fetch('header.html')
+            .then(function (response) {
+                return response.text();
+
+            })
+            .then(function (body) {
+                document.getElementById("header").innerHTML=body;
+
+            })
+    </script>
+</head>
+<body>
+<nav>
+    <ul class="cf">
+        <li><a href="index.html">shasless</a></li>
+
+        <li><a class="dropdown">Multimedia</a>
+            <ul>
+                <li><a href="./europage.html"> ecoute un peu d'eurobeat</a></li>
+                <li><a href="./lesptitesvideo.html"> les ptites videos</a></li>
+            </ul>
+
+        </li>
+        <li><a class="dropdown" >Pages interactives</a>
+            <ul>
+                <li><a href="./Ioiso.html">Meme oiso</a></li>
+                <li><a href="./randomredditpost.html"> meme from reddit</a></li>
+                <li><a href="./sanic.html">sanic</a></li>
+            </ul>
+
+        </li>
+        <li><a class="dropdown">culture meme</a>
+            <ul>
+                <li><a href="./page weeb.html"> weeb page</a></li>
+                <li><a href="./yannniktoi.html"> catalogue du cringe</a></li>
+            </ul>
+
+        </li>
+    </ul>
+</nav>
+<div id="header" class="header"></div>
+
+<div>
+    <button class="myButton" onclick="tourner()" >NE PAS CLIQUEZ ICI</button>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <a href="https://youtu.be/dQw4w9WgXcQ">
+        <h1>Tout d'abord, une petite vidéo pour comprendre le contexte</h1>
+    </a>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1>Intro :
+        Le premier meme informatique apparait en 1996 sur un forum internet, lorsque utilisateur poste une image de nourrisson dansant sur un fond noir. A partir de ce point, les memes vont rapidemment gagner en popularité à mesure que internet se développe chez le grand public, pour connaitre son véritable âge d'or avec l'apparition des réseaux sociaux, qui améliorent considérablement la vitesse de diffusion des memes. La plupart des memes populaires aujourd'hui sont apparu dans la moitié de la décennie 2010.</h1>
+    <audio id="connard" src="connard.mp3" controls play loop></audio>
+    <table id="Tableau" >
+        <tr>
+            <td class="titre"><b>Nom du meme</b></td>
+            <td class="titre"><b>Date d'apparition</b></td>
+            <td class="titre"><b>Lien vers l'original</b></td>
+            <td class="titre"><b>Image du meme</b></td>
+        </tr>
+        <tr>
+            <td>Pepe the frog</td>
+            <td>2008</td>
+            <td><a href="https://youtu.be/qTksCYUgI7s">
+                Voir ici !
+            </a></td>
+            <td><img id="image1"src="pepe.jpg"/></td>
+        </tr>
+        <tr>
+            <td>Nyan Cat</td>
+            <td>5 avril 2011</td>
+            <td><a href="https://youtu.be/wZZ7oFKsKzY">
+                Voir ici !
+            </a></td>
+            <td><img id="image2" src="nyan cat.gif"/></td>
+        </tr>
+        <tr>
+            <td>Shooting Stars</td>
+            <td>2015</td>
+            <td><a href="https://youtu.be/feA64wXhbjo">
+                Voir ici !
+            </a></td>
+            <td><img id="image3" src="shooting stars meme.gif"></td>
+        </tr>
+        <tr>
+            <td>Ugandan Knuckles</td>
+            <td>2016</td>
+            <td><a href="https://youtu.be/LD8P8Mq3rVU">
+                Voir ici !
+            </a></td>
+            <td><img id="image4" src="ugandanknuck.jpg"></td>
+        </tr>
+        <tr>
+            <td>STONKS</td>
+            <td>5 Septembre 2017</td>
+            <td><a href="https://youtu.be/SMRg9mKcyhM">
+                Voir ici !
+            </a></td>
+            <td><img id="image5" src="stonks.jpg"></td>
+        </tr>
+        <tr>
+            <td>Deja Vu</td>
+            <td>2016</td>
+            <td><a href="https://youtu.be/dv13gl0a-FA">
+                Voir ici !
+            </a></td>
+            <td><img id="image6" src="initial.jpg"></td>
+        </tr>
+        <tr>
+            <td>"Pen Pinapple Apple Pen"</td>
+            <td>2016</td>
+            <td><a href="https://youtu.be/0E00Zuayv9Q">
+                Voir ici !
+            </a></td>
+            <td><img id="image7" src="PPAP.jpg"></td>
+        </tr>
+        <tr>
+            <td>Suprised Pikachu</td>
+            <td>2018</td>
+            <td><a href="https://youtu.be/IfQumd_o0Gk">
+                Voir ici !
+            </a></td>
+            <td><img id="image8" src="pikachu.jpg"></td>
+        </tr>
+        <tr>
+            <td>IMMA FIRIN MAH' LAZER</td>
+            <td>2011</td>
+            <td><a href="https://youtu.be/c7r8FKVMRPY">
+                Voir ici !
+            </a></td>
+            <td><img id="image9" src="Lazer.png"></td>
+        </tr>
+
+    </table>
+</div>
+<div id="footer" class="footer"></div>
+</body>
+<footer>
+    <ul class="footer">
+        <li class="footer-item"><a href="#top" ><i class="fas fa-angle-double-up fa-2x"></i></a></li>
+        <li class="footer-item"><a href="contact.html" ><i class="far fa-id-card fa-2x"></i></a></li>
+        <li class="footer-item"><a href="https://twitter.com"><i class="fab fa-twitter fa-2x" ></i></a></li>
+        <li class="footer-item"><a href="https://github.com/shasless"><i class="fab fa-github fa-2x" ></i></a></li>
+
+    </ul>
+</footer>
+</html>
