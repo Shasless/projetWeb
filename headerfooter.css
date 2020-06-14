@@ -53,7 +53,7 @@ nav a {
     -o-transition: all 1s ease;
     transition: all 1s ease;
 }
-nav li:hover a {
+nav li:hover a, nav li:active a {
     background: #7694ba;
     color: #f5f5f5;
 }
@@ -72,7 +72,7 @@ nav li ul {
     -o-transition: all .25s ease;
     transition: all .25s ease;
 }
-nav li:hover ul {
+nav li:hover ul, nav li:active ul {
     opacity: 1;
     top: 50px;
     visibility: visible;
@@ -81,7 +81,7 @@ nav li ul li {
     float: none;
     width: 100%;
 }
-nav li ul a:hover {
+nav li ul a:hover,nav li ul a:active {
     background: #346990;
 }
 
@@ -132,7 +132,7 @@ footer {
     cursor: pointer;
 }
 
-.footer-item:hover {
+.footer-item:hover , .footer-item:active {
     opacity: 1;
     color: #49083e;
     -webkit-transition: opacity .2s ease-out;
